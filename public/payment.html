@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/paymente.css"> <!-- Atualize o nome do arquivo CSS -->
+    <title>Página de Pagamentos</title>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="img/ALEVA LOGO.png" alt="Logo do Meu Servidor" class="logo-img">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="client.html">Clientes</a></li>
+            <li><a href="payment.html" class="active">Pagamentos</a></li>
+            <li><a href="home.html">solicitar entrega</a></li>
+            <li><a href="calcular.html">calcular caixa</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <h2>Página de Pagamentos</h2>
+
+    <label for="clienteSelect">Selecionar Cliente:</label>
+    <select id="clienteSelect">
+        <option value="">Selecione um cliente</option>
+        <!-- Opções de clientes serão preenchidas dinamicamente via JavaScript -->
+    </select>
+
+    <div id="faturamentosContainer" style="display: none;">
+        <h3>Faturamentos do Cliente</h3>
+        <table id="faturamentosTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Valor</th>
+                    <th>Data de Vencimento</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Faturamentos serão preenchidos dinamicamente via JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="pagamentoOptions" style="display: none;">
+        <h3>Opções de Pagamento</h3>
+        <button id="boletoButton">Gerar Boleto</button>
+        <button id="pixButton">Gerar PIX</button>
+    </div>
+
+    <div id="message" class="message"></div>
+</main>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer>
+    <p>&copy; 2024 Meu Servidor. Todos os direitos reservados.</p>
+    <ul>
+        <li><a href="/sobre">Sobre</a></li>
+        <li><a href="/contato">Contato</a></li>
+        <li><a href="/privacidade">Política de Privacidade</a></li>
+    </ul>
+</footer>
+
+<script src="js/payment.js"></script>
+</body>
+</html>

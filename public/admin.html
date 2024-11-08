@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Painel Administrativo</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="clientes.html">Clientes</a></li>
+                    <li><a href="motoboy.html">Motoboys</a></li>
+                    <li><a href="historico.html">Histórico de Corridas</a></li>
+                    <li><a href="financeiro.html">Financeiro</a></li>
+                    <li><a href="loguin.html">logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Painel Administrativo</h1>
+            </header>
+            <section class="dashboard-content">
+                <p>Bem-vindo ao painel administrativo. Selecione uma opção no menu lateral.</p>
+            </section>
+        </main>
+    </div>
+
+    
+    <script>
+        // Verifica se o usuário está autenticado
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = 'loguin.html';  // Redireciona para o login se o token não estiver presente
+        }
+
+        // Função de logout
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            localStorage.removeItem('token');  // Remove o token do localStorage
+            window.location.href = 'loguin.html';  // Redireciona para o login
+        });
+    </script>
+</body>
+</html>

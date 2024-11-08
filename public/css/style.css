@@ -1,0 +1,104 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header e navegação */
+.header {
+  background-color: #333;
+  padding: 10px 0;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  max-height: 50px;
+}
+
+.navbar {
+  display: flex;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.nav-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 12px;
+}
+
+.nav-menu li a:hover {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .banner-text h1 {
+      font-size: 28px;
+  }
+
+  .banner-text p {
+      font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-text h1 {
+      font-size: 22px;
+  }
+
+  .banner-text p {
+      font-size: 16px;
+  }
+}

@@ -1,0 +1,38 @@
+<!-- frontend/pages/clientes.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Clientes</title>
+    <link rel="stylesheet" href="css/adms.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Painel Administrativo</h2>
+        <ul>
+            <li><a href="clientes.html">Clientes</a></li>
+            <li><a href="motoboys.html">Motoboys</a></li>
+            <li><a href="financeiro.html">Financeiro</a></li>
+            <li><a href="entregas_ativas.html">Entregas em Tempo Real</a></li>
+            <li><a href="historico_entregas.html">Histórico das Entregas</a></li>
+            <li><a href="configuracoes.html">Configurações</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>Lista de Clientes</h1>
+        <button onclick="window.location.href='adicionar_cliente.html'">Adicionar Cliente</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="clientes-lista"></tbody>
+        </table>
+    </div>
+    <script src="../assets/js/clientes.js"></script>
+</body>
+</html>

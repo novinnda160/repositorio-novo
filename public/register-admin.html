@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Painel Administrativo</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Registro - Painel Administrativo</h2>
+        <form id="registerAdminForm">
+            <input type="text" id="adminNome" placeholder="Nome" required>
+            <input type="email" id="adminEmail" placeholder="Email" required>
+            <input type="password" id="adminSenha" placeholder="Senha" required>
+            <button type="submit">Registrar</button>
+        </form>
+        <div id="registerError" class="error"></div>
+    </div>
+    <script src="register.js"></script>
+</body>
+</html>

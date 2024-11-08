@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Entregas - Calcular Entrega</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/calcular.css">
+   
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Calcule Sua Encomenda</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home.html">Solicitar Entrega</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/client.html">Cadastrar Cliente</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/calcular.html">Calcular Entrega</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/payment.html">Pagamento</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/perfil.html">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Sair</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>Calcular Valor da Entrega</h2>
+
+        <form id="deliveryCalculationForm">
+            <div class="form-group">
+                <label for="deliveryDistance">Distância (em km)</label>
+                <input type="number" id="deliveryDistance" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="boxLength">Comprimento da Caixa (cm)</label>
+                <input type="number" id="boxLength" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="boxWidth">Largura da Caixa (cm)</label>
+                <input type="number" id="boxWidth" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="boxHeight">Altura da Caixa (cm)</label>
+                <input type="number" id="boxHeight" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success">Calcular Valor da Entrega</button>
+        </form>
+
+        <h3 class="mt-4">Valor da Entrega: R$ <span id="deliveryValue">0.00</span></h3>
+    </div>
+
+    <footer class="text-center bg-dark text-white py-3">
+        <p>&copy; 2024 - Painel de Entregas</p>
+    </footer>
+
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/calcular.js"></script>
+
+</html>

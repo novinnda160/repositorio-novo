@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Pedidos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css"> <!-- CSS do pedidos -->
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="img/ALEVA LOGO.png" alt="Logo" class="logo">
+        </div>
+        <div class="navbar-menu">
+            <a class="nav-link" href="home.html">Home</a>
+            <a class="nav-link" href="client.html">Cadastrar Clientes</a>
+            <a class="nav-link" href="payment.html">Pagamentos</a>
+            <a class="nav-link" href="calcular.html">calcular caixa</a>
+            <a class="nav-link" href="perfil.html">Perfil</a>
+            <a class="nav-link" href="/">Sair</a>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <h2>Solicitar Entrega</h2>
+        <form id="pedidoForm">
+            <div class="form-group">
+                <label for="cliente">Cliente</label>
+                <select id="cliente" class="form-control" required>
+                    <option value="">Selecione um cliente</option>
+                    <!-- Lista de clientes será carregada aqui -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="enderecoColeta">Endereço de Coleta</label>
+                <input type="text" id="enderecoColeta" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="enderecoEntrega">Endereço de Entrega</label>
+                <input type="text" id="enderecoEntrega" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="valorCorrida">Valor da Corrida</label>
+                <input type="text" id="valorCorrida" class="form-control" readonly>
+            </div>
+            <button type="submit" class="btn">Solicitar Entrega</button>
+        </form>
+        <div id="message" class="alert" style="display:none;"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="js/home.js"></script> <!-- JavaScript do pedidos -->
+</body>
+</html>

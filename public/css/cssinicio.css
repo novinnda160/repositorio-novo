@@ -1,0 +1,124 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Usando Helvetica Neue */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white; /* Fundo branco */
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.logo img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 20px;
+}
+
+nav a {
+    color: #333; /* Cor do texto */
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif; /* Mantendo Montserrat para o menu */
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav a:hover {
+    color: #007bff; /* Cor ao passar o mouse */
+}
+
+nav a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: #007bff; /* Cor da linha */
+    transition: width 0.3s;
+    width: 0;
+    margin: auto;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.banner, .banner02, .banner03 {
+    text-align: center;
+    position: relative;
+    padding: 50px 20px;
+    color: white;
+}
+
+.banner img, .banner02 img, .banner03 img {
+    width: 100%; /* Largura total */
+    height: auto; /* Altura automática para manter a proporção */
+    border-radius: 8px; /* Bordas arredondadas */
+}
+
+.banner {
+    background-color: rgba(0, 123, 255, 0.7); /* Cor do fundo com opacidade */
+}
+
+.banner02 {
+    background-color: rgba(40, 167, 69, 0.7); /* Cor do fundo com opacidade */
+}
+
+.banner03 {
+    background-color: rgba(220, 53, 69, 0.7); /* Cor do fundo com opacidade */
+}
+
+.banner h1, .banner02 h1, .banner03 h1 {
+    font-size: 36px;
+}
+
+.features {
+    padding: 40px 20px;
+    background-color: #e9ecef; /* Cor de fundo das features */
+    text-align: center;
+}
+
+.feature {
+    margin: 20px;
+    display: inline-block;
+    width: 30%; /* Ajuste conforme necessário */
+}
+
+.feature h3 {
+    margin-top: 10px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+}
+
+.card {
+    width: 30%; /* Ajuste conforme necessário */
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px; /* Bordas arredondadas */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}

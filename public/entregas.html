@@ -1,0 +1,47 @@
+<!-- frontend/pages/entregas.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entregas</title>
+    <link rel="stylesheet" href="css/">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Painel Admin</h2>
+        <ul>
+            <li><a href="clientes.html">Clientes</a></li>
+            <li><a href="motoboys.html">Motoboys</a></li>
+            <li><a href="entregas.html">Entregas</a></li>
+            <li><a href="financeiro.html">Financeiro</a></li>
+            <li><a href="configuracoes.html">Configurações</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>Gerenciar Entregas</h1>
+        <form id="entregas-form">
+            <label for="motoboyId">Motoboy:</label>
+            <select id="motoboyId" required></select>
+            <label for="clienteId">Cliente:</label>
+            <select id="clienteId" required></select>
+            <button type="submit">Adicionar Entrega</button>
+        </form>
+
+        <table id="entregas-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Motoboy</th>
+                    <th>Cliente</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script src="../assets/js/entregas.js"></script>
+</body>
+</html>

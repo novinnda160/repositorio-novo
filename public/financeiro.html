@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Financeiro</title>
+    <link rel="stylesheet" href="css/financeiro.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="/">
+            <img src="img/ALEVA LOGO.png" alt="Logo" class="logo">
+        </a>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/admin.html">Painel</a></li>
+                <li class="nav-item"><a class="nav-link" href="/financeiro.html">Financeiro</a></li>
+                <li class="nav-item"><a class="nav-link" href="/motoboy.html">Motoboy</a></li>
+                <li class="nav-item"><a class="nav-link" href="/historico.html">Histórico</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Sair</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Container Principal -->
+    <div class="container">
+        <h2>Faturamento do Mês</h2>
+        
+        <!-- Resumo de faturamento -->
+        <div class="finance-summary">
+            <h3>Faturamento Total: R$ <span id="total-faturamento">0,00</span></h3>
+            <button onclick="loadFaturamento()">Carregar Faturamento</button>
+        </div>
+
+        <!-- Tabela de Faturamento -->
+        <h3>Histórico de Faturamento do Mês</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Cliente</th>
+                    <th>Valor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="faturamentoList"></tbody>
+        </table>
+
+        <div id="message" class="alert"></div>
+    </div>
+
+</body>
+<script src="js/financeiro.js"></script>
+
+</html>
