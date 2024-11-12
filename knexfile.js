@@ -25,10 +25,11 @@ const knexConfig = {
   production: {
     client: 'mysql',
     connection: {
-      host: 'localhost',
-      user: 'root',
-      password: '748512g#G',
-      database: 'aalevar_sql'
+      host: unction.proxy.rlwy.net,
+      user: root,
+      password: NRlJClbdtIoJUWCeXEYbnpYMFyGSWeqb,
+      database: railway,
+      port: 43631,
     },
     migrations: {
       directory: path.join(__dirname, 'migrations'),
