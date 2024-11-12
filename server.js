@@ -11,6 +11,7 @@ import logger from 'morgan';
 import http from 'http';
 import jwt from 'jsonwebtoken';
 import db from './database/database.js'; // Conexão com o banco de dados
+
 dotenv.config();
 const app = express();
 const server = http.createServer(app);

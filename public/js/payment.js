@@ -1,85 +1,140 @@
-document.addEventListener("DOMContentLoaded", () => {
-    loadClients();
-    document.getElementById("clienteSelect").addEventListener("change", handleClientSelect);
-    document.getElementById("boletoButton").addEventListener("click", () => generatePayment("boleto"));
-    document.getElementById("pixButton").addEventListener("click", () => generatePayment("pix"));
+// Função para obter clientes do localStorage
+function obterClientes() {
+    return JSON.parse(localStorage.getItem('clientes')) || [];
+}
+
+// Função para obter faturas de um cliente específico
+function obterFaturas(clienteId) {
+    const faturas = JSON.parse(localStorage.getItem('faturas')) || {};
+    return faturas[clienteId] || [];
+}
+
+// Função para salvar faturas no localStorage
+function salvarFaturas(clienteId, novasFaturas) {
+    const faturas = JSON.parse(localStorage.getItem('faturas')) || {};
+    faturas[clienteId] = novasFaturas;
+    localStorage.setItem('faturas', JSON.stringify(faturas));
+}
+
+// Função para preencher o select com os clientes
+function preencherClientes() {
+    const clienteSelect = document.getElementById('clienteSelect');
+    const clientes = obterClientes();
+
+    clientes.forEach(cliente => {
+        const option = document.createElement('option');
+        option.value = cliente.id;
+        option.textContent = cliente.nome;
+        clienteSelect.appendChild(option);
+    });
+}
+
+// Exibir faturas do cliente selecionado
+function exibirFaturas(clienteId) {
+    const faturamentosContainer = document.getElementById('faturamentosContainer');
+    const faturamentosTableBody = document.getElementById('faturamentosTable').querySelector('tbody');
+    faturamentosTableBody.innerHTML = '';
+
+    if (clienteId) {
+        const faturas = obterFaturas(clienteId);
+        faturas.forEach(fatura => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${fatura.id}</td>
+                <td>R$ ${fatura.valor.toFixed(2)}</td>
+                <td>${fatura.vencimento}</td>
+                <td>${fatura.status}</td>
+            `;
+
+            const actionCell = document.createElement('td');
+            const pagarButton = document.createElement('button');
+            pagarButton.textContent = 'Pagar';
+            pagarButton.addEventListener('click', () => pagarFatura(clienteId, fatura.id));
+            actionCell.appendChild(pagarButton);
+
+            row.appendChild(actionCell);
+            faturamentosTableBody.appendChild(row);
+        });
+
+        faturamentosContainer.style.display = 'block';
+    } else {
+        faturamentosContainer.style.display = 'none';
+    }
+}
+
+// Função para pagar fatura e atualizar o status
+function pagarFatura(clienteId, faturaId) {
+    const faturas = obterFaturas(clienteId);
+    const fatura = faturas.find(f => f.id === faturaId);
+
+    if (fatura && fatura.status !== 'Paga') {
+        fatura.status = 'Paga';
+        salvarFaturas(clienteId, faturas);
+        exibirFaturas(clienteId);
+        mostrarMensagem('Fatura paga com sucesso!', 'success');
+    } else {
+        mostrarMensagem('Essa fatura já está paga.', 'info');
+    }
+}
+
+// Função para gerar nova fatura para o cliente
+function gerarFatura(clienteId) {
+    const novasFaturas = obterFaturas(clienteId);
+    const novaFatura = {
+        id: 'F' + Date.now(),
+        valor: parseFloat((Math.random() * 100).toFixed(2)), // Valor aleatório para simular uma fatura
+        vencimento: new Date().toISOString().split('T')[0],
+        status: 'Pendente'
+    };
+    novasFaturas.push(novaFatura);
+    salvarFaturas(clienteId, novasFaturas);
+    exibirFaturas(clienteId);
+    mostrarMensagem('Nova fatura gerada!', 'success');
+}
+
+// Exibir mensagem temporária
+function mostrarMensagem(texto, tipo) {
+    const message = document.getElementById('message');
+    message.textContent = texto;
+    message.className = `message ${tipo}`;
+    setTimeout(() => message.textContent = '', 3000);
+}
+
+// Exibir opções de pagamento
+function exibirOpcoesPagamento() {
+    const pagamentoOptions = document.getElementById('pagamentoOptions');
+    pagamentoOptions.style.display = 'block';
+}
+
+// Evento para quando um cliente é selecionado
+document.getElementById('clienteSelect').addEventListener('change', function() {
+    const clienteId = this.value;
+    exibirFaturas(clienteId);
+    if (clienteId) {
+        exibirOpcoesPagamento();
+    }
 });
 
-async function loadClients() {
-    try {
-        const response = await fetch("/api/clientes"); // Atualize a URL da API
-        if (!response.ok) throw new Error("Erro ao carregar os clientes.");
-
-        const clients = await response.json();
-        const clienteSelect = document.getElementById("clienteSelect");
-        
-        clients.forEach(cliente => {
-            const option = document.createElement("option");
-            option.value = cliente.id;
-            option.textContent = `${cliente.nome} (${cliente.cpf})`;
-            clienteSelect.appendChild(option);
-        });
-    } catch (error) {
-        showMessage("Erro ao carregar clientes: " + error.message, "error");
+// Evento para gerar boleto e PIX
+document.getElementById('boletoButton').addEventListener('click', function() {
+    const clienteId = document.getElementById('clienteSelect').value;
+    if (clienteId) {
+        gerarFatura(clienteId);
+        mostrarMensagem('Boleto gerado com sucesso!', 'success');
+    } else {
+        mostrarMensagem('Selecione um cliente para gerar o boleto.', 'error');
     }
-}
+});
 
-async function handleClientSelect() {
-    const clientId = document.getElementById("clienteSelect").value;
-    if (!clientId) return;
-
-    try {
-        const response = await fetch(`/api/faturamento/cliente/${clientId}`); // Atualize a URL da API
-        if (!response.ok) throw new Error("Erro ao carregar os faturamentos do cliente.");
-
-        const faturamentos = await response.json();
-        const faturamentosContainer = document.getElementById("faturamentosContainer");
-        const faturamentosTable = document.getElementById("faturamentosTable").getElementsByTagName("tbody")[0];
-        
-        faturamentosTable.innerHTML = ""; // Limpa a tabela
-
-        faturamentos.forEach(faturamento => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${faturamento.id}</td>
-                <td>${faturamento.valor}</td>
-                <td>${faturamento.data_vencimento}</td>
-                <td>${faturamento.status}</td>
-                <td><button class="payButton" data-id="${faturamento.id}">Pagar</button></td>
-            `;
-            faturamentosTable.appendChild(row);
-        });
-
-        faturamentosContainer.style.display = "block";
-        document.getElementById("pagamentoOptions").style.display = "block";
-        
-        // Chama a função para gerar o boleto automaticamente
-        generatePayment("boleto");
-    } catch (error) {
-        showMessage("Erro ao carregar faturamentos: " + error.message, "error");
+document.getElementById('pixButton').addEventListener('click', function() {
+    const clienteId = document.getElementById('clienteSelect').value;
+    if (clienteId) {
+        gerarFatura(clienteId);
+        mostrarMensagem('PIX gerado com sucesso!', 'success');
+    } else {
+        mostrarMensagem('Selecione um cliente para gerar o PIX.', 'error');
     }
-}
+});
 
-function generatePayment(method) {
-    const clientId = document.getElementById("clienteSelect").value;
-    if (!clientId) return showMessage("Selecione um cliente.", "error");
-
-    // Lógica para gerar pagamento (boleto ou PIX)
-    if (method === "boleto") {
-        showMessage(`Pagamento gerado via boleto para o cliente ${clientId}.`, "success");
-        // Aqui você pode chamar sua lógica de backend para gerar o boleto
-    } else if (method === "pix") {
-        showMessage(`Pagamento gerado via PIX para o cliente ${clientId}.`, "success");
-        // Aqui você pode chamar sua lógica de backend para gerar o PIX
-    }
-}
-
-function showMessage(message, type) {
-    const messageDiv = document.getElementById("message");
-    messageDiv.textContent = message;
-    messageDiv.className = `message ${type}`;
-    setTimeout(() => {
-        messageDiv.textContent = "";
-        messageDiv.className = "";
-    }, 3000);
-}
+// Inicialização
+document.addEventListener('DOMContentLoaded', preencherClientes);

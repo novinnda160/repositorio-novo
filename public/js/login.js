@@ -1,43 +1,24 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const loginForm = document.getElementById('loginForm');
-    const errorMessage = document.getElementById('error-message');
+// Função que lida com o envio do formulário de login
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Previne o envio do formulário para não recarregar a página
 
-    if (loginForm) {
-        loginForm.addEventListener('submit', async function (event) {
-            event.preventDefault(); // Impede o comportamento padrão do formulário
+    // Pegando os dados do formulário
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+    // Recuperando os usuários do localStorage
+    const users = JSON.parse(localStorage.getItem('users')) || [];
 
-            // Limpa mensagens de erro antes de tentar o login
-            errorMessage.textContent = '';
+    console.log("Usuários armazenados:", users); // Verifique no console se os dados estão corretos
 
-            try {
-                const response = await fetch('http://localhost:3000/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email, password }),
-                });
+    // Verificando se o usuário existe e se a senha está correta
+    const user = users.find(user => user.email === email && user.password === password);
 
-                if (!response.ok) {
-                    throw new Error('Credenciais inválidas');
-                }
-
-                const data = await response.json();
-
-                if (data.success) {
-                    // Redireciona para home.html após o login bem-sucedido
-                    window.location.href = '/home.html'; // Mude conforme necessário
-                } else {
-                    errorMessage.textContent = 'Erro no login. Tente novamente.';
-                }
-
-            } catch (error) {
-                console.error('Erro ao realizar login:', error);
-                errorMessage.textContent = 'Erro ao realizar login: ' + error.message;
-            }
-        });
+    if (user) {
+        // Se o usuário for encontrado, redireciona para a página home
+        window.location.href = 'home.html';
+    } else {
+        // Se o login falhar, exibe uma mensagem de erro
+        document.getElementById('error-message').textContent = 'Email ou senha incorretos!';
     }
 });

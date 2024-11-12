@@ -1,0 +1,128 @@
+/* Estilo Global */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #eef1f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+/* Menu */
+.menu {
+    width: 100%;
+    background-color: #5c6bc0;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.menu nav ul li {
+    display: inline;
+}
+
+.menu nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: background 0.3s;
+}
+
+.menu nav ul li a:hover, .menu nav ul li a.active {
+    background-color: #3f51b5;
+}
+
+/* Container do Formulário */
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+h1 {
+    color: #5c6bc0;
+    margin-bottom: 20px;
+}
+
+/* Campos de Entrada */
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #5c6bc0;
+    outline: none;
+}
+
+/* Botão de Registro */
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    background-color: #5c6bc0;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3f51b5;
+}
+
+/* Mensagem de Erro */
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+/* Links e Rodapé */
+p {
+    margin: 10px 0;
+}
+
+a {
+    color: #5c6bc0;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+}
