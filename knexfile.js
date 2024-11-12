@@ -7,11 +7,13 @@ const __dirname = path.dirname(__filename);
 const knexConfig = {
   development: {
     client: 'mysql', // Ou 'mysql2', dependendo do pacote que você instalou
-    connection: {
-      host: 'localhost', // Substitua pelo seu host
-      user: 'root', // Substitua pelo seu usuário do MySQL
-      password: '748512g#G', // Substitua pela sua senha do MySQL
-      database: 'nome_do_banco' // Substitua pelo nome do seu banco de dados
+    connection: 
+    { 
+       host: unction.proxy.rlwy.net,
+      user: root,
+      password: NRlJClbdtIoJUWCeXEYbnpYMFyGSWeqb,
+      database: railway,
+      port: 43631,
     },
     migrations: {
       directory: path.join(__dirname, 'migrations'),

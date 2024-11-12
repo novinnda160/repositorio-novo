@@ -12,12 +12,10 @@ import http from 'http';
 import jwt from 'jsonwebtoken';
 import db from './database/database.js'; // Conexão com o banco de dados
 dotenv.config();
-
 const app = express();
 const server = http.createServer(app);
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET;
-
 // Middlewares
 app.use(cors());
 app.use(helmet());
